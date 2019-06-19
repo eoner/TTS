@@ -92,6 +92,17 @@ def ljspeech(root_path, meta_file):
             items.append([text, wav_file])
     return items
 
+def trspeech(root_path, meta_file):
+    txt_file = os.path.join(root_path, meta_file)
+    items = []
+    with open(txt_file, 'r') as ttf:
+        for line in ttf:
+            cols = line.split('|')
+            wav_file = os.path.join(root_path, cols[0])
+            text = cols[1]
+            items.append([text, wav_file])
+    return items    
+
 
 def nancy(root_path, meta_file):
     """Normalizes the Nancy meta data file to TTS format"""
